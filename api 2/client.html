@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API</title>
+</head>
+<body>
+    <ul id="blogs"></ul>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        $(function(){
+            $.get("http://localhost/apis/api%202/", function(data){
+                if(parseInt(data.flag) === 1){
+                    for(let i=0; i < data.data.length; i++){
+                        $("#blogs").append("<li>"+ data.data[i].blog_title +"</li>");
+                    }
+                }else {
+                    alert(data.msg)
+                }
+            }, 'json');
+        });
+    </script>
+</body>
+</html>
